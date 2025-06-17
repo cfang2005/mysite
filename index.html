@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内蒙古政府工作报告解读</title>
+    <style type="text/css">
+       *{
+        padding: 0;
+        margin: 0;
+       }
+      
+       .bg{background-image: url(image/p3.jpg); 
+            } 
+       header,section,footer{
+          /*  background-color: #82111f;*/
+            padding: 30px;
+           margin: 0 20px;
+        }
+        header h1{color: #e9ddb6;text-align: center;}
+        section h2{color: #e9ddb6;}
+        .inner{display:flex;
+                justify-content: space-evenly;
+            align-items: center;
+            padding: 20px;
+            background-color: #e9ddb6;
+            
+           /* background-image: url(image/);*/
+           /* flex-direction: column;*/
+        }
+        .inner p{font-size: 18px;
+                justify-items: center;
+                margin: 40px;
+                color: #555;
+                align-items: center;
+                
+        }
+        footer p{ color: #e9ddb6;font-size: 18px;
+            text-align: right;
+                
+        }
+     
+    </style>
+    <style>
+        #container{
+          min-width: 320px;
+          max-width: 800px;
+          height: 700px;
+          margin: 1em auto;
+       
+      }
+      
+      .animated-line {
+          stroke-dasharray: 8;
+          stroke-dashoffset: 10;
+          animation: dash 15s linear infinite;//连线速度
+      }
+      
+      @keyframes dash {
+          from {
+              stroke-dashoffset: 100;
+          }
+      
+          to {
+              stroke-dashoffset: 20;
+          }
+      }
+      
+      
+      
+        </style>
+
+</head>
+<body class="bg">
+    <header>
+    
+        <h1>2025内蒙古政府工作报告解读</h1>
+        
+    </header>
+ 
+    <main>
+        
+        <section>
+            <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+            <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+            <script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
+            <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+            
+            <div id="container" style="height: 800px; width: 1200px;"></div> <!-- 固定容器尺寸 -->
+            <script>
+            (async () => {
+                const topology = await fetch(
+                    'https://code.highcharts.com/mapdata/custom/world-highres.topo.json'
+                ).then(response => response.json());
+            
+                const data = [
+                    { 'hc-key': 'cn', color: '#00a500', info: '中国' },
+                    { 'hc-key': 'tw', color: '#00a500', info: '台湾省' }
+                ];
+            
+                // 初始化图表
+                Highcharts.mapChart('container', {
+                    chart: {
+                        map: topology,
+                        projection: {  // 关键修改：更换投影
+                            name: 'LambertConformalConic',
+                            parallels: [25, 45],  // 标准纬线
+                            rotation: [104]       // 中央经线
+                        }
+                    },
+            
+                    title: { text: '咖啡豆的历史 ☕' },
+                    legend: { enabled: false },
+                    tooltip: {
+                        headerFormat: '<b>{point.key}</b>:<br/>',
+                        pointFormat: '{point.info}'
+                    },
+            
+                    mapView: {
+                        fitToGeometry: {
+                            type: 'MultiPoint',
+                            coordinates: [
+                                [73.5, 3.9],   // 西南角（新疆帕米尔高原 + 曾母暗沙）
+                                [135.0, 53.5]  // 东北角（黑龙江抚远 + 漠河）
+                            ]
+                        },
+                        padding: '5%',  // 添加5%的边距
+                        maxZoom: 4      // 限制最大缩放级别
+                    },
+            
+                    series: [
+                        {
+                            data,
+                            keys: ['hc-key', 'color', 'info'],
+                            name: '国家区域',
+                            borderColor: '#666',  // 添加边界线
+                            borderWidth: 0.5
+                        },
+                        {
+                            type: 'mapline',
+                            lineWidth: 2,
+                            color: '#666',
+                            enableMouseTracking: false,
+                            data: [
+                                // 优化路径坐标...
+                            ]
+                        },
+                        {
+                            type: 'mappoint',
+                            // 保持原有标记点配置...
+                        }
+                    ]
+                });
+            })();
+            </script>
+        </section>
+        
+        <section>
+            <h2>第二部分 2025经济社会发展总体要求</h2>
+            <div class="inner">
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;今年是“十四五”规划收官之年，也是“十五五”规划谋篇之年。中央经济工作会议后，自治区党委召开十一届九次全会暨全区经济工作会议，对全年工作作出部署。做好今年工作，要以习近平新时代中国特色社会主义思想为指导，深入贯彻党的二十大和二十届二中、三中全会精神，全面贯彻落实习近平总书记对内蒙古的重要指示精神，以党建为引领，全面深化改革，坚持稳中求进、守正创新、干字当头，更好统筹发展和安全，
+                努力在“贯穿一条主线、办好两件大事、弘扬蒙古马精神、闯新路进中游”上取得更大进展，不断书写中国式现代化内蒙古新篇章。</p>
+                <video width="520" height="440" autoplay="autoplay" loop="loop" controls>
+
+                    <source src="image/danmu.mp4" type="video/mp4">
+                    </video>
+            
+            </div>
+        </section>
+        
+        <section>
+            <h2>第三部分 2025经济发展总体目标</h2>
+            <div class="inner">
+            <img src="image/s3.png" alt="一张图片" width="300" height="400">
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;面对新形势、新任务，政府工作要有新提升、新作为。首要的一条就是旗帜鲜明讲政治，始终做到对党绝对忠诚，坚定拥护“两个确立”，坚决做到“两个维护”，坚持党中央集中统一领导，坚决贯彻党中央决策部署，全面落实自治区党委工作要求，严格落实意识形态工作责任制。要一心一意谋发展，锚定闯新路进中游目标，鼓足干劲、奋勇争先，把我区来之不易的良好势头保持下去。要真心实意解难题，深入基层一线把情况摸实、把问题摸准，拿出实招硬招解决好群众的烦心事、企业的期盼事、基层的困难事。既要依法行政、也要紧抓快办，法律法规禁止的坚决不做，在合法合规前提下优化行政流程，提高办事效率，只争朝夕做好每一项工作。自觉接受人大、政协等各方面监督，不折不扣抓好中央巡视、责任审计及各类监督检查反馈问题整改。廉洁自律是每一名政府工作人员必须坚守的底线，要严守党的各项纪律规定，
+                树牢正确权力观、政绩观、事业观，在遵规守纪中改革创新、担当作为，决不辜负群众的信任，决不辜负组织的培养和重托。</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>呼和浩特市民族学院</p>
+        <p>23级网络与新媒体 姓名</p>
+        <p>2025年4月</p>
+    </footer>
+  
+  
+
+</body>
+</html>
